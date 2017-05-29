@@ -1,6 +1,10 @@
 #!/bin/bash
 
-echo "This is the value specified for the input 'example_step_input': ${example_step_input}"
+latest_tag='git describe --tags'
+previous_tag='git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`'
+
+echo "Latest tag: $latest_tag"
+echo "Previous tag: $previous_tag"
 
 #
 # --- Export Environment Variables for other Steps:
@@ -19,3 +23,4 @@ echo "This is the value specified for the input 'example_step_input': ${example_
 # The exit code of your Step is very important. If you return
 #  with a 0 exit code `bitrise` will register your Step as "successful".
 # Any non zero exit code will be registered as "failed" by `bitrise`.
+return 0
