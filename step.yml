@@ -24,7 +24,7 @@ deps:
 run_if: true
 inputs:
 outputs:
-  - changelog_env_name: $COMMIT_CHANGELOG_PATH
+  - changelog_env_name: $COMMIT_CHANGELOG
     opts:
       title: "ENV File Path"
       summary: File path to the generated commit changelog
