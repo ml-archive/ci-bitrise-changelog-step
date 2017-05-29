@@ -1,7 +1,7 @@
 #!/bin/bash
 
-latest_tag='git describe --tags'
-previous_tag='git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`'
+latest_tag=`git describe --tags`
+previous_tag=`git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1``
 
 echo "Latest tag: $latest_tag"
 echo "Previous tag: $previous_tag"
