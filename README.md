@@ -1,7 +1,11 @@
-# My Awesome Step
+# Git changelog step
 
-My Awesome Step is a solid starting code base for
-a new Step.
+Generates a changelog for use in deployment steps later on. It pulls every commit message between the last two tags or if <2 tags found, all commit messages.
+
+Example of generated output COMMIT_CHANGELOG:
+
+ - cleaned up the code (joso@nodes.dk - Wed, 24 May 2017 18:44:38 +0200)
+ - Initial commit (joso@nodes.dk - Wed, 24 May 2017 10:32:34 +0200)
 
 
 ## How to use this Step
