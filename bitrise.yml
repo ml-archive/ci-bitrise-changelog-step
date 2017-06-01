@@ -18,7 +18,7 @@ workflows:
         inputs:
         - content: |-
             #!/bin/bash
-            echo "COMMIT_CHANGELOG_PATH: ${COMMIT_CHANGELOG_PATH}"
+            echo "COMMIT_CHANGELOG: ${COMMIT_CHANGELOG}"
 
 
   # ----------------------------------------------------------------
@@ -35,7 +35,7 @@ workflows:
   share-this-step:
     envs:
       # if you want to share this step into a StepLib
-      - MY_STEPLIB_REPO_FORK_GIT_URL:
+      - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
       - STEP_ID_IN_STEPLIB: git-commit-changelog
       - STEP_GIT_VERION_TAG_TO_SHARE: $RELEASE_VERSION
       - STEP_GIT_CLONE_URL: https://github.com/nodes-android/ci-bitrise-changelog-step.git

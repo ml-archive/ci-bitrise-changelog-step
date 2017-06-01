@@ -8,11 +8,8 @@ support_url: https://github.com/nodes-android/ci-bitrise-changelog-step/issues
 host_os_tags:
   - osx-10.10
 project_type_tags:
-  - ios
-  - android
-  - xamarin
 type_tags:
-  - script
+  - utility
 is_requires_admin_user: false
 is_always_run: true
 is_skippable: false
@@ -24,14 +21,8 @@ deps:
 run_if: true
 inputs:
 outputs:
-  - changelog_env_name: $COMMIT_CHANGELOG
+  - COMMIT_CHANGELOG: ""
     opts:
-      title: "ENV File Path"
-      summary: File path to the generated commit changelog
-      description: |
-        Generates a text file containing all commits in changelog format, e.g.
-
-         - Latest commit
-         - Some commit
-         - First commit
-      is_required: true
+      title: "Environment variable containing the generated commit changelog"
+      summary: ""
+      description: ""

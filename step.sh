@@ -2,13 +2,14 @@
 
 latest_tag=`git describe --tags`
 previous_tag="$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))"
-changelog=""
+changelog="Empty changelog"
 committer="Build triggered from: $(git log --pretty=format:"%ce" HEAD^..HEAD)"
 
 if [[ $previous_tag ]] && [[ $latest_tag ]]
 then
     changelog="$(git log --pretty=format:" - %s (%ce - %cD)" $latest_tag...$previous_tag)"    
-else
+elif [[ $latest_tag ]]
+then
     changelog="$(git log --pretty=format:" - %s (%ce - %cD)")"    
 fi
 
