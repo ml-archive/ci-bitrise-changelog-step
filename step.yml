@@ -7,7 +7,7 @@ source_code_url: https://github.com/nodes-android/ci-bitrise-changelog-step
 support_url: https://github.com/nodes-android/ci-bitrise-changelog-step/issues
 host_os_tags:
   - osx-10.10
-project_type_tags:
+project_type_tags: []
 type_tags:
   - utility
 is_requires_admin_user: false
@@ -19,7 +19,7 @@ deps:
   apt_get:
   - name: git
 run_if: true
-inputs:
+inputs: []
 outputs:
   - COMMIT_CHANGELOG: ""
     opts:
