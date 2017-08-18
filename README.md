@@ -1,12 +1,13 @@
-# Git changelog step
+# Git Changelog Step
 
-Generates a changelog for use in deployment steps later on. It pulls every commit message between the last two tags or if <2 tags found, all commit messages.
+Generates a changelog message from git commit for use in other steps. It pulls every commit message between the last two tags or if less than 2 tags are found, all commit messages.
 
-Example of generated output COMMIT_CHANGELOG:
+Example of generated output `COMMIT_CHANGELOG`:
 
- - cleaned up the code (joso@nodes.dk - Wed, 24 May 2017 18:44:38 +0200)
+```
+ - Cleaned up the code (joso@nodes.dk - Wed, 24 May 2017 18:44:38 +0200)
  - Initial commit (joso@nodes.dk - Wed, 24 May 2017 10:32:34 +0200)
-
+```
 
 ## How to use this Step
 
