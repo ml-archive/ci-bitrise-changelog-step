@@ -35,7 +35,7 @@ else
 fi
 
 # Add branch info
-branch="$(git branch --contains tags/${BITRISE_GIT_TAG})"
+branch="$(git branch --contains ${GIT_CLONE_COMMIT_HASH})"
 branch=${branch:2}
 NEWLINE=$'\n'
 if [ -n "$branch" ]; then
