@@ -36,16 +36,17 @@ fi
 
 # Add branch info
 branch="$(git branch --contains tags/${BITRISE_GIT_TAG})"
+branch=${branch:2}
 NEWLINE=$'\n'
-if [ -n $branch ]; then
-    if [[ $branch == *"feature"* ]]; then
+if [ -n "$branch" ]; then
+    if [[ "$branch" == *"feature"* ]]; then
         branchinfo="*_WARNING_*: This is a _FEATURE_ build on *${branch}*${NEWLINE}${NEWLINE}" 
         changelog=$branchinfo$changelog
-    elif [[ $branch == *"hotfix"* ]]; then
+    elif [[ "$branch" == *"hotfix"* ]]; then
         branchinfo="*_WARNING_*: This is a _HOTFIX_ build on *${branch}*${NEWLINE}${NEWLINE}"
         changelog=$branchinfo$changelog
     else
-        branchinfo="Built on *${BITRISE_GIT_BRANCH}*${NEWLINE}${NEWLINE}"
+        branchinfo="Built on *${branch}*${NEWLINE}${NEWLINE}"
         changelog=$branchinfo$changelog
     fi
 fi
