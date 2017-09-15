@@ -19,7 +19,15 @@ deps:
   apt_get:
   - name: git
 run_if: true
-inputs: []
+inputs:
+- markdown_output: "yes"
+  opts:
+    is_expand: false
+    is_required: true
+    title: Format the changelog as markdown
+    value_options:
+    - "yes"
+    - "no"
 outputs:
   - COMMIT_CHANGELOG: ""
     opts:
