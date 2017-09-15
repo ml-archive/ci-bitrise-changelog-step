@@ -15,9 +15,9 @@ elif [ $all_tags = 1 ]; then
     # We have first tag, fetch since first commit (ie. don't specify previous tag)
     
     if [ -n "${markdown_output}" -a "${markdown_output}" == "true" ]; then
-        changelog="$(git log --pretty=format:" - %s (%cr) _<%ce>_")"
+        changelog="$(git log --pretty=format:" - %s (%cd) _<%ce>_") --date=format:"%Y-%m-%d %H:%M:%S""
     else
-        changelog="$(git log --pretty=format:" - %s (%cr) _<%ce>_")"
+        changelog="$(git log --pretty=format:" - %s (%cd) _<%ce>_") --date=format:"%Y-%m-%d %H:%M:%S""
     fi
 else 
     echo "Fetching commits since last tag."
@@ -28,23 +28,24 @@ else
 
     # Get commit messages since previous tag
     if [ -n "${markdown_output}" -a "${markdown_output}" == "true" ]; then
-        changelog="$(git log --pretty=format:" - %s (%cr) _<%ce>_" $latest_tag...$previous_tag)"    
+        changelog="$(git log --pretty=format:" - %s (%cd) _<%ce>_" --date=format:"%Y-%m-%d %H:%M:%S" $latest_tag...$previous_tag)"    
     else
-        changelog="$(git log --pretty=format:"%s  (%cr) _<%ce>_" $latest_tag...$previous_tag)"    
+        changelog="$(git log --pretty=format:"%s  (%cd) _<%ce>_" --date=format:"%Y-%m-%d %H:%M:%S" $latest_tag...$previous_tag)"    
     fi
 fi
 
 # Add branch info
+branch="$(git branch --contains tags/${BITRISE_GIT_TAG})"
 NEWLINE=$'\n'
-if [ -n "${BITRISE_GIT_BRANCH}" ]; then
-    if [[ "${BITRISE_GIT_BRANCH}" == *"feature"* ]]; then
-        branchinfo="*_WARNING_*: This is a _FEATURE_ build on *${BITRISE_GIT_BRANCH}*${NEWLINE}" 
+if [ -n $branch ]; then
+    if [[ $branch == *"feature"* ]]; then
+        branchinfo="*_WARNING_*: This is a _FEATURE_ build on *${branch}*${NEWLINE}${NEWLINE}" 
         changelog=$branchinfo$changelog
-    elif [[ "${BITRISE_GIT_BRANCH}" == *"hotfix"* ]]; then
-        branchinfo="*_WARNING_*: This is a _HOTFIX_ build on *${BITRISE_GIT_BRANCH}*${NEWLINE}"
+    elif [[ $branch == *"hotfix"* ]]; then
+        branchinfo="*_WARNING_*: This is a _HOTFIX_ build on *${branch}*${NEWLINE}${NEWLINE}"
         changelog=$branchinfo$changelog
     else
-        branchinfo="Built on *${BITRISE_GIT_BRANCH}*${NEWLINE}"
+        branchinfo="Built on *${BITRISE_GIT_BRANCH}*${NEWLINE}${NEWLINE}"
         changelog=$branchinfo$changelog
     fi
 fi
