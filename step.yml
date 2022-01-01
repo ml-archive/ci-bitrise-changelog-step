@@ -20,19 +20,6 @@ deps:
   - name: git
 run_if: true
 inputs:
-- markdown_output: "yes"
-  opts:
-    is_expand: false
-    is_required: true
-    title: Format the changelog as markdown
-    value_options:
-    - "yes"
-    - "no"
-- markdown_git_log_format: " - %s (%cd) _<%ce>_"
-  opts:
-    title: `git log` format string to use when outputting as markdown
-    is_expand: false
-    is_required: false
 - git_log_format: "%s  (%cd) _<%ce>_"
   opts:
     title: `git log` format string to use

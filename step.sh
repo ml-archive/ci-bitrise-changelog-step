@@ -6,12 +6,6 @@ set -e
 # Read all tags, separate them into an array
 all_tags=`git tag -l | wc -l`
 
-if [ -n "${markdown_output}" -a "${markdown_output}" == "true" ]; then
-    log_format=$markdown_git_log_format
-else
-    log_format=$git_log_format
-fi
-
 if [ $all_tags = 0 ]; then
     # No tags, exit.
     echo "Repository contains no tags. Please make a tag first."
@@ -20,7 +14,7 @@ elif [ $all_tags = 1 ]; then
     echo "Fetching commits since first commit."
     # We have first tag, fetch since first commit (ie. don't specify previous tag)
     
-    changelog="$(git log --pretty=format:"$log_format") --date=format:"%Y-%m-%d %H:%M:%S""
+    changelog="$(git log --pretty=format:"$git_log_format") --date=format:"%Y-%m-%d %H:%M:%S""
 else 
     echo "Fetching commits since last tag."
 
@@ -29,7 +23,7 @@ else
     previous_tag="$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))"
 
     # Get commit messages since previous tag
-    changelog="$(git log --pretty=format:"$log_format" --date=format:"%Y-%m-%d %H:%M:%S" $latest_tag...$previous_tag)"
+    changelog="$(git log --pretty=format:"$git_log_format" --date=format:"%Y-%m-%d %H:%M:%S" $latest_tag...$previous_tag)"
 fi
 
 # Add branch info
