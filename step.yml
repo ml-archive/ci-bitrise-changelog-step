@@ -22,7 +22,7 @@ run_if: true
 inputs:
 - git_log_format: "%s  (%cd) _<%ce>_"
   opts:
-    title: `git log` format string to use
+    title: git log format string to use
     is_expand: false
     is_required: false
 outputs:
