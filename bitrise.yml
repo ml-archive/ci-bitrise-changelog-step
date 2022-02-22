@@ -3,7 +3,7 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 
 app:
   envs:
-  - RELEASE_VERSION: 1.0.3
+  - RELEASE_VERSION: 2.0.0
 
 workflows:
   test:
@@ -19,6 +19,7 @@ workflows:
         - content: |-
             #!/bin/bash
             echo "COMMIT_CHANGELOG: ${COMMIT_CHANGELOG}"
+            echo "COMMIT_CHANGELOG_MARKDOWN: ${COMMIT_CHANGELOG_MARKDOWN}"
 
 
   # ----------------------------------------------------------------
