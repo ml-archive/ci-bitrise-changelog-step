@@ -1,12 +1,56 @@
 # Git Changelog Step
 
+## Conventional Commits-changelog
+This step supports Conventional Commit formatting and parses the resulting commits into a nicely formatted changelog:
+
+It parses the commit messages by the form:
+
+`feat: implemented IAP` -> ` - Implemented IAP (John Doe)`
+
+And if you supply extra context to a Jira ticket or similar:
+
+`feat(JRA-123): implemented IAP` -> ` - JRA-123 Implemented IAP (John Doe)`
+
+### Example of generated output `COMMIT_CHANGELOG`:
+```
+v1.0.1
+-----
+
+🎉 Features
+-----
+- Implemented IAP (John Doe)
+- JRA-123 Implemented IAP (John Doe)
+
+🐛 Bugfixes
+-----
+- JRA-123 Fixed unintended bug (John Doe)
+
+🤷 Other changes
+-----
+ - Initial commit (John Doe)
+```
+
+It also generates a `COMMIT_CHANGELOG_MARKDOWN` which is Github/Slack markdown friendly.
+
+### Options
+
+You can override the formatting of each section via the following step inputs:
+`custom_features_name` defaults to `🎉 Features`
+`custom_bugfixes_name` defaults to `🐛 Bugfixes`
+`custom_maintenance_name` defaults to `🔨Improvements`
+`custom_format_name` defaults to `⚒ Formatting`
+`custom_test_name` defaults to `📝 Tests`
+`custom_refactor_name` defaults to `🧹 Refactors`
+`custom_documentation_name` defaults to `📄 Documentation`
+`custom_other_name` defaults to `🤷 Other changes`
+
+## Normal changelog
 Generates a changelog message from git commit for use in other steps. It pulls every commit message between the last two tags or if less than 2 tags are found, all commit messages.
 
-Example of generated output `COMMIT_CHANGELOG`:
-
+### Example of generated output `COMMIT_CHANGELOG`:
 ```
- - Cleaned up the code (joso@nodes.dk - Wed, 24 May 2017 18:44:38 +0200)
- - Initial commit (joso@nodes.dk - Wed, 24 May 2017 10:32:34 +0200)
+ - Cleaned up the code (John Doe)
+ - Initial commit (John Doe)
 ```
 
 ## How to use this Step
