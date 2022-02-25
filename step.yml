@@ -1,7 +1,62 @@
 title: Git Commit Changelog
 summary: Generates a changelog for deployment between two tags
 description: |-
-  Generates a changelog for deployment between two tags
+  ## Conventional Commits-changelog
+  This step supports Conventional Commit formatting and parses the resulting commits into a nicely formatted changelog:
+
+  It parses the commit messages by the form:
+
+  `feat: implemented IAP` -> ` - Implemented IAP (John Doe)`
+
+  And if you supply extra context to a Jira ticket or similar:
+
+  `feat(JRA-123): implemented IAP` -> ` - JRA-123 Implemented IAP (John Doe)`
+
+  ### Example of generated output `COMMIT_CHANGELOG_MARKDOWN`:
+  ```
+  v1.0.1
+  -----
+
+  🎉 Features
+  -----
+  - Implemented IAP (John Doe)
+  - JRA-123 Implemented IAP (John Doe)
+
+  🐛 Bugfixes
+  -----
+  - JRA-123 Fixed unintended bug (John Doe)
+
+  🤷 Other changes
+  -----
+  - Initial commit (John Doe)
+  ```
+
+  ### Options
+
+  You can override the formatting of each section via the following step inputs:
+  `custom_features_name` defaults to `🎉 Features`
+  `custom_bugfixes_name` defaults to `🐛 Bugfixes`
+  `custom_maintenance_name` defaults to `🔨Improvements`
+  `custom_format_name` defaults to `⚒ Formatting`
+  `custom_test_name` defaults to `📝 Tests`
+  `custom_refactor_name` defaults to `🧹 Refactors`
+  `custom_documentation_name` defaults to `📄 Documentation`
+  `custom_other_name` defaults to `🤷 Other changes`
+
+  ## Normal changelog
+  Generates a changelog message from git commit for use in other steps. It pulls every commit message between the last two tags or if less than 2 tags are found, all commit messages.
+
+  ### Example of generated output `COMMIT_CHANGELOG`:
+  ```
+  - Cleaned up the code (John Doe)
+  - Initial commit (John Doe)
+  ```
+
+  ## Input options
+
+  Commit messages are pulled via: `changelog="$(git log --no-merges --pretty=format:"$prettygitformat" --date=format:"$dateformat" $latest_tag...$previous_tag)"`.
+  Which enables custom commit message formatting via the step input: `pretty_git_format`. [Documentation on `git log` pretty formats can be found here](https://git-scm.com/docs/pretty-formats)
+  You can also override the date format used in `git log` via the step input: `custom_dateformat`
 website: https://github.com/nodes-android/ci-bitrise-changelog-step
 source_code_url: https://github.com/nodes-android/ci-bitrise-changelog-step
 support_url: https://github.com/nodes-android/ci-bitrise-changelog-step/issues
@@ -34,24 +89,54 @@ inputs:
     is_required: false
     title: "git log format"
     category: Formatting
-    summary: "git log --pretty formatting. Documentation on `git log` pretty formats can be found here: https://git-scm.com/docs/pretty-formats"
-    description: "git log --pretty formatting. Documentation on `git log` pretty formats can be found here: https://git-scm.com/docs/pretty-formats"
+    summary: |
+      Custom --pretty format for `git log --no-merges --pretty=format:"$prettygitformat"`. Defaults to `%s (%cn)`
+    description: |
+      Commit messages are pulled via: `changelog="$(git log --no-merges --pretty=format:"$prettygitformat" --date=format:"$dateformat" $latest_tag...$previous_tag)"`.
+      Which enables custom commit message formatting via the step input: `pretty_git_format`. [Documentation on `git log` pretty formats can be found here](https://git-scm.com/docs/pretty-formats)
 - custom_dateformat: "%Y-%m-%d %H:%M:%S"
   opts:
     is_expand: false
     is_required: false
     title: "git log date format"
     category: Formatting
-    summary: "If you are using dates in pretty_git_format, this is the way to customize it. Documentation on `git log` pretty formats can be found here: https://git-scm.com/docs/pretty-formats"
-    description: "If you are using dates in pretty_git_format, this is the way to customize it. Documentation on `git log` pretty formats can be found here: https://git-scm.com/docs/pretty-formats"
+    summary: |
+      Custom --pretty date format for `git log ... --date=format:"$dateformat" `. Defaults to `"%Y-%m-%d %H:%M:%S"`
+    description: |
+      Commit messages are pulled via: `changelog="$(git log --no-merges --pretty=format:"$prettygitformat" --date=format:"$dateformat" $latest_tag...$previous_tag)"`.
+      Which enables custom commit message formatting via the step input: `custom_dateformat`. [Documentation on `git log` pretty formats can be found here](https://git-scm.com/docs/pretty-formats)
 outputs:
-  - COMMIT_CHANGELOG: ""
+  - COMMIT_CHANGELOG: 
     opts:
       title: "Generated changelog"
       summary: ""
-      description: ""
-  - COMMIT_CHANGELOG_MARKDOWN: ""
+      description: |
+        Example of generated output `COMMIT_CHANGELOG`:
+        ```
+        - Cleaned up the code (John Doe)
+        - Initial commit (John Doe)
+        ```
+  - COMMIT_CHANGELOG_MARKDOWN:
     opts:
       title: "Generated markdown changelog"
       summary: ""
-      description: ""
+      description: |
+        Example of generated output `COMMIT_CHANGELOG_MARKDOWN`:
+        ```
+        v1.0.1
+        -----
+
+        🎉 Features
+        -----
+        - Implemented IAP (John Doe)
+        - JRA-123 Implemented IAP (John Doe)
+
+        🐛 Bugfixes
+        -----
+        - JRA-123 Fixed unintended bug (John Doe)
+
+        🤷 Other changes
+        -----
+        - Initial commit (John Doe)
+        ```
+
