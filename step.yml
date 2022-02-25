@@ -34,6 +34,7 @@ description: |-
 
   You can override the formatting of each section via the following step inputs:    
   | Step input key  | Default value |
+  |----|----|
   |`custom_features_name` | `🎉 Features` |
   |`custom_bugfixes_name` | `🐛 Bugfixes` |
   |`custom_maintenance_name` | `🔨Improvements` |
