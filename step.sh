@@ -315,7 +315,7 @@ echo "Latest tag: $latest_tag"
 echo "Previous tag: $previous_tag"
 
 # Set environment variable for bitrise
-envman add --key COMMIT_CHANGELOG --value "$completeChangelog"
-envman add --key COMMIT_CHANGELOG_MARKDOWN --value "$markdownChangelog"
+envman add --key COMMIT_CHANGELOG --value "$(echo -e $completeChangelog)"
+envman add --key COMMIT_CHANGELOG_MARKDOWN --value "$(echo -e $markdownChangelog)"
 
 exit 0
