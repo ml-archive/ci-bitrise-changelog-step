@@ -200,8 +200,12 @@ conventional_commit_changelog() {
         elif [[ $line =~ ^(bugfix\((.*)\)|bugfix):(.*)$ ]]; then
             tmp="${BASH_REMATCH[2]} ${BASH_REMATCH[3]}"
             tmp=$(format_commit_message "$tmp")
-            featureList+="$tmp\n"
+            fixList+="$tmp\n"
         elif [[ $line =~ ^(chore\((.*)\)|chore):(.*)$ ]]; then
+            tmp="${BASH_REMATCH[2]} ${BASH_REMATCH[3]}"
+            tmp=$(format_commit_message "$tmp")
+            maintenanceList+="$tmp\n"
+        elif [[ $line =~ ^(build\((.*)\)|build):(.*)$ ]]; then
             tmp="${BASH_REMATCH[2]} ${BASH_REMATCH[3]}"
             tmp=$(format_commit_message "$tmp")
             maintenanceList+="$tmp\n"
