@@ -115,64 +115,64 @@ inputs:
   opts:
     is_expand: false
     is_required: false
-    title: "Features section"
-    category: "Section overrides"
+    title: "Features"
+    category: "Sections"
     summary:
     description: 
 - custom_bugfixes_name: "🐛 Bugfixes"
   opts:
     is_expand: false
     is_required: false
-    title: "Bugfixes section"
-    category: "Section overrides"
+    title: "Bugfixes"
+    category: "Sections"
     summary:
     description: 
-- custom_maintenance_name: "🔨Improvements"
+- custom_maintenance_name: "🔨 Improvements"
   opts:
     is_expand: false
     is_required: false
-    title: "🔨Improvements section"
-    category: "Section overrides"
+    title: "Improvements"
+    category: "Sections"
     summary:
     description: 
 - custom_format_name: "⚒ Formatting"
   opts:
     is_expand: false
     is_required: false
-    title: "Formatting section"
-    category: "Section overrides"
+    title: "Formatting"
+    category: "Sections"
     summary:
     description: 
 - custom_test_name: "📝 Tests"
   opts:
     is_expand: false
     is_required: false
-    title: "Tests section"
-    category: "Section overrides"
+    title: "Tests"
+    category: "Sections"
     summary:
     description: 
 - custom_refactor_name: "🧹 Refactors"
   opts:
     is_expand: false
     is_required: false
-    title: "Refactors section"
-    category: "Section overrides"
+    title: "Refactors"
+    category: "Sections"
     summary:
     description: 
 - custom_documentation_name: "📄 Documentation"
   opts:
     is_expand: false
     is_required: false
-    title: "Documentation section"
-    category: "Section overrides"
+    title: "Documentation"
+    category: "Sections"
     summary:
     description: 
 - custom_other_name: "🤷 Other changes"
   opts:
     is_expand: false
     is_required: false
-    title: "Other changes section"
-    category: "Section overrides"
+    title: "Other changes"
+    category: "Sections"
     summary:
     description: 
 outputs:
