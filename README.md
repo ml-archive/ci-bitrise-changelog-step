@@ -36,6 +36,7 @@ It also generates a `COMMIT_CHANGELOG_MARKDOWN` which is Github/Slack markdown f
 
 You can override the formatting of each section via the following step inputs:
 | Step input key  | Default value |
+|----|----|
 |`custom_features_name` | `🎉 Features` |
 |`custom_bugfixes_name` | `🐛 Bugfixes` |
 |`custom_maintenance_name` | `🔨Improvements` |
@@ -43,7 +44,7 @@ You can override the formatting of each section via the following step inputs:
 |`custom_test_name` | to `📝 Tests` |
 |`custom_refactor_name` | `🧹 Refactors` |
 |`custom_documentation_name` | `📄 Documentation` |
-|`custom_other_name` | `🤷 Other changes` |    
+|`custom_other_name` | `🤷 Other changes` |     
 
 ## Normal changelog
 Generates a changelog message from git commit for use in other steps. It pulls every commit message between the last two tags or if less than 2 tags are found, all commit messages.
