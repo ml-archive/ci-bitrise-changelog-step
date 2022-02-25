@@ -38,7 +38,6 @@ fi
 if [ $all_tags = 0 ]; then
     # No tags, exit.
     echo "Repository contains no tags. Please make a tag first."
-    exit 1
 elif [ $all_tags = 1 ]; then
     echo "Fetching commits since first commit."
     # We have first tag, fetch since first commit (ie. don't specify previous tag)
