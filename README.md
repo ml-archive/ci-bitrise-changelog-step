@@ -35,14 +35,15 @@ It also generates a `COMMIT_CHANGELOG_MARKDOWN` which is Github/Slack markdown f
 ### Options
 
 You can override the formatting of each section via the following step inputs:
-`custom_features_name` defaults to `🎉 Features`
-`custom_bugfixes_name` defaults to `🐛 Bugfixes`
-`custom_maintenance_name` defaults to `🔨Improvements`
-`custom_format_name` defaults to `⚒ Formatting`
-`custom_test_name` defaults to `📝 Tests`
-`custom_refactor_name` defaults to `🧹 Refactors`
-`custom_documentation_name` defaults to `📄 Documentation`
-`custom_other_name` defaults to `🤷 Other changes`
+| Step input key  | Default value |
+|`custom_features_name` | `🎉 Features` |
+|`custom_bugfixes_name` | `🐛 Bugfixes` |
+|`custom_maintenance_name` | `🔨Improvements` |
+|`custom_format_name` | to `⚒ Formatting` |
+|`custom_test_name` | to `📝 Tests` |
+|`custom_refactor_name` | `🧹 Refactors` |
+|`custom_documentation_name` | `📄 Documentation` |
+|`custom_other_name` | `🤷 Other changes` |    
 
 ## Normal changelog
 Generates a changelog message from git commit for use in other steps. It pulls every commit message between the last two tags or if less than 2 tags are found, all commit messages.
@@ -52,6 +53,12 @@ Generates a changelog message from git commit for use in other steps. It pulls e
  - Cleaned up the code (John Doe)
  - Initial commit (John Doe)
 ```
+
+## Input options
+
+Commit messages are pulled via: `changelog="$(git log --no-merges --pretty=format:"$prettygitformat" --date=format:"$dateformat" $latest_tag...$previous_tag)"`.
+Which enables custom commit message formatting via the step input: `pretty_git_format`. [Documentation on `git log` pretty formats can be found here](https://git-scm.com/docs/pretty-formats)
+You can also override the date format used in `git log` via the step input: `custom_dateformat`
 
 ## How to use this Step
 

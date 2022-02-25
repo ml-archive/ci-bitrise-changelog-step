@@ -1,8 +1,8 @@
 title: Git Commit Changelog
 summary: Generates a changelog for deployment between two tags
 description: |-
-  ## Conventional Commits-changelog
-  This step supports Conventional Commit formatting and parses the resulting commits into a nicely formatted changelog:  
+  ## Conventional Commits-changelog  
+  This step supports Conventional Commit formatting and parses the resulting commits into a nicely formatted changelog:    
     
   It parses the commit messages by the form:  
   `feat: implemented IAP` -> ` - Implemented IAP (John Doe)`  
@@ -33,14 +33,15 @@ description: |-
   ### Options  
 
   You can override the formatting of each section via the following step inputs:    
-  `custom_features_name` defaults to `🎉 Features`  
-  `custom_bugfixes_name` defaults to `🐛 Bugfixes`  
-  `custom_maintenance_name` defaults to `🔨Improvements`  
-  `custom_format_name` defaults to `⚒ Formatting`  
-  `custom_test_name` defaults to `📝 Tests`  
-  `custom_refactor_name` defaults to `🧹 Refactors`  
-  `custom_documentation_name` defaults to `📄 Documentation`  
-  `custom_other_name` defaults to `🤷 Other changes`    
+  | Step input key  | Default value |
+  |`custom_features_name` | `🎉 Features` |
+  |`custom_bugfixes_name` | `🐛 Bugfixes` |
+  |`custom_maintenance_name` | `🔨Improvements` |
+  |`custom_format_name` | to `⚒ Formatting` |
+  |`custom_test_name` | to `📝 Tests` |
+  |`custom_refactor_name` | `🧹 Refactors` |
+  |`custom_documentation_name` | `📄 Documentation` |
+  |`custom_other_name` | `🤷 Other changes` |    
     
   ## Normal changelog
   Generates a changelog message from git commit for use in other steps. It pulls every commit message between the last two tags or if less than 2 tags are found, all commit messages.  
@@ -91,7 +92,7 @@ inputs:
     title: "git log format"
     category: Formatting
     summary: |
-      Custom --pretty format for `git log --no-merges --pretty=format:"$prettygitformat"`. Defaults to `%s (%cn)`
+      Custom --pretty format for `git log ... --pretty=format:"$prettygitformat"`. Defaults to `%s (%cn)`
     description: |
       Commit messages are pulled via: `changelog="$(git log --no-merges --pretty=format:"$prettygitformat" --date=format:"$dateformat" $latest_tag...$previous_tag)"`.  
       Which enables custom commit message formatting via the step input: `pretty_git_format`.    
