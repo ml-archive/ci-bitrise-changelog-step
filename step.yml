@@ -110,6 +110,71 @@ inputs:
       Which enables custom commit message formatting via the step input: `custom_dateformat`.  
 
       [Documentation on git log pretty formats can be found here](https://git-scm.com/docs/pretty-formats)
+
+- custom_features_name: "🎉 Features"
+  opts:
+    is_expand: false
+    is_required: false
+    title: "Features section"
+    category: "Section overrides"
+    summary:
+    description: 
+- custom_bugfixes_name: "🐛 Bugfixes"
+  opts:
+    is_expand: false
+    is_required: false
+    title: "Bugfixes section"
+    category: "Section overrides"
+    summary:
+    description: 
+- custom_maintenance_name: "🔨Improvements"
+  opts:
+    is_expand: false
+    is_required: false
+    title: "🔨Improvements section"
+    category: "Section overrides"
+    summary:
+    description: 
+- custom_format_name: "⚒ Formatting"
+  opts:
+    is_expand: false
+    is_required: false
+    title: "Formatting section"
+    category: "Section overrides"
+    summary:
+    description: 
+- custom_test_name: "📝 Tests"
+  opts:
+    is_expand: false
+    is_required: false
+    title: "Tests section"
+    category: "Section overrides"
+    summary:
+    description: 
+- custom_refactor_name: "🧹 Refactors"
+  opts:
+    is_expand: false
+    is_required: false
+    title: "Refactors section"
+    category: "Section overrides"
+    summary:
+    description: 
+- custom_documentation_name: "📄 Documentation"
+  opts:
+    is_expand: false
+    is_required: false
+    title: "Documentation section"
+    category: "Section overrides"
+    summary:
+    description: 
+- custom_other_name: "🤷 Other changes"
+  opts:
+    is_expand: false
+    is_required: false
+    title: "Other changes section"
+    category: "Section overrides"
+    summary:
+    description: 
 outputs:
   - COMMIT_CHANGELOG: 
     opts:
